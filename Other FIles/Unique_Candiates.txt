@@ -1,0 +1,6 @@
+   1 dog
+   1 experience
+   1 file
+   1 learning
+   1 sample
+   3 Work

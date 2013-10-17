@@ -1,0 +1,27 @@
+06-10-2013
+
+Output of pos tagger can be done in different formats but if we were to use it in a java application, it seems to be in only one format (e.g. This/DT is/VBZ a/DT sample/NN file/NN ./)
+
+We know that if it is run independently, we can output it as a tsv (tab separated 2) format. Using this we can use linux commands like grep and sort to perform operations.
+We can assume that we are working on the following format:
+
+This		DT
+a		DT
+is		VBZ
+sample		NN
+file		NN
+
+such that the tags are sorted. Since we are looking for maybe nouns, we can use grep to obtain all the nouns and write them to another file "Noun_tags.txt".
+
+Extraction of features can then be done on these nouns.
+
+$ java -cp stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -model left3words-wsj-0-18.tagger -textFile input.txt -outputFormat tsv -outputFile tags.txt
+
+grep -w "NN" tags.txt > Noun_tags.txt
+awk '{print $1}' Noun_tags.txt
+
+
+
+
+
+

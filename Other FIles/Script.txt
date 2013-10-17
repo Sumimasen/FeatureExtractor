@@ -1,0 +1,11 @@
+# Run the POS tagger. Output using tsp format. Grep the tag needed and output to file.
+# Get the first field to remove the tag. Sort the results and get the unique tags.
+# Output results Unique candidates.  
+
+java -cp stanford-postagger.jar edu.stanford.nlp.tagger.maxent.MaxentTagger -model left3words-wsj-0-18.tagger -textFile input.txt -outputFormat tsv -outputFile tags.txt
+
+grep -w "\\NN" tags.txt | awk '{print $1}' > Noun_tags.txt
+
+sort -f Noun_tags.txt | uniq -c -i > Unique_Candiates.txt	
+
+#sort -f Noun_tags.txt | uniq -i	
