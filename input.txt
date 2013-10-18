@@ -1,2 +1,4 @@
 This is a sample file. What a wonderful learning experience.
 There is so much work, Urgghhhhhh... work is subarashi!
+This a machine learning thing.
+This is the data mining group.

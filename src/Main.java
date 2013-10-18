@@ -34,19 +34,6 @@ public class Main {
 
 		String sample = "";
 		String tagged = "";
-		
-		
-//		// The sample string
-//        String sample = "This is a sample text";
-// 
-//        // The tagged string
-//        String tagged = tagger.tagString(sample);
-// 
-//        // Output the result
-//        System.out.println(tagged);	
-//        PrintWriter writer = new PrintWriter("Tagged.txt", "UTF-8");
-//        writer.println(tagged);
-//        writer.close();
         
         FileInputStream fstream = new FileInputStream("input.txt");
         DataInputStream in = new DataInputStream(fstream);
@@ -108,48 +95,34 @@ public class Main {
 
 	       	if ((wordParts[1].contains("NN")) || (wordParts[1].contains("NNS")) || (wordParts[1].contains("NNP")) || (wordParts[1].contains("NNPS")))
 	       	{
-	       		System.out.println(wordParts[0]);
-	       		newObject = new TagObject(wordParts[1], wordParts[0], i, 0);
+	       		String Phrase = wordParts[0];
+	       		
+	       		for (int j = i+1; j < words.length; j++) 
+       			{
+	       			String futureWord = words[j].split("/")[1];
+	       			
+       				if ((futureWord.contains("NN")) || (futureWord.contains("NNS")) || (futureWord.contains("NNP")) ||(futureWord.contains("NNPS")))
+       				{
+       					Phrase = Phrase + " " + words[j].split("/")[0];
+       					i = j;
+       				}
+       				else
+       					break;
+       					
+       			}
+	       		
+	       		newObject = new TagObject(wordParts[1], Phrase, i, 0);
 	       		myObjList.add(newObject);
 	       	}
-	       		
-	       		
-//	       	 if (wordParts[1].contains("NN"))
-//	       	 {
-//	       		 newObject = new TagObject("NN", i, 0);
-//	       		 myObjList.add(newObject);
-//	       	 }
-//	       	 else if (wordParts[1].contains("NNS"))
-//	       	 {
-//	       		 newObject = new TagObject("NNS", i, 0);
-//	       		 myObjList.add(newObject);
-//	       	 }
-//	       	 else if (wordParts[1].contains("NNP"))
-//	       	 {
-//	       		 newObject = new TagObject("NNP", i, 0);
-//	       		 myObjList.add(newObject);
-//	       	 }
-//	       	 else if (wordParts[1].contains("NNPS"))
-//	       	 {
-//	       		 newObject = new TagObject("NNPS", i, 0);
-//	       		 myObjList.add(newObject);
-//	       	 }
         }
         
-//        GetTermFreq(List<TagObject> myObjList);
         
         System.out.println(myObjList.size());
+        
         GetTermFreq(myObjList);
         
-        //for (int i = 0; i < myObjList.size(); i++)
-        	//System.out.println(myObjList.get(i).TagTerm);
-        	//if (myObjList.get(i).TagTerm == "work")
-        	//	System.out.println(myObjList.get(i).TF);
-        
-//        Stack aStack = new Stack();
-//        aStack.push ( new Integer(1) );
-//        Integer stackValue = (Integer) aStack.pop();
-//        System.out.println(stackValue);
+        for (int i = 0; i < myObjList.size(); i++)
+        	System.out.println(myObjList.get(i).TagTerm);
 
 	}
 	
@@ -185,12 +158,13 @@ public class Main {
         		Integer stackValue = (Integer) aStack.pop();
         		myObjList.get(stackValue).setObjTF(Freq);
         		System.out.println(Freq);
-        		//myObjList.get(int(aStack.pop()));//need to update the frequency for all the terms equal to ttt of i
             }
     	}
     	
+    	System.out.println("Printing TF: ");
+    	
     	for (int i = 0; i < myObjList.size(); i++)
-    	System.out.println(myObjList.get(i).TF);
+    		System.out.println(myObjList.get(i).TF);
     }
 	
 	

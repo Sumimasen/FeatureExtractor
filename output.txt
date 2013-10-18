@@ -1,2 +1,4 @@
 This/DT is/VBZ a/DT sample/NN file/NN ./. What/WP a/DT wonderful/JJ learning/NN experience/NN ./. 
 There/EX is/VBZ so/RB much/JJ work/NN ,/, Urgghhhhhh/NNP .../: work/NN is/VBZ subarashi/JJ !/. 
+This/DT a/DT machine/NN learning/VBG thing/NN ./. 
+This/DT is/VBZ the/DT data/NNS mining/NN group/NN ./. 
