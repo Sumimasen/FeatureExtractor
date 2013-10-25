@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+
+
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.File;
@@ -15,6 +17,7 @@ import java.util.Stack;
 
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
+import java.sql.SQLException;
 
 
 
@@ -87,9 +90,9 @@ public class Main {
         
         for (int i = 0; i < words.length; i++)
         {
-	       	 System.out.println(words[i]);
+	       	System.out.println(words[i]);
 	       	 
-	       	 TagObject newObject;
+	       	TagObject newObject;
 	       	 
 	       	String[] wordParts = words[i].split("/");	//[0] will be the term, [1] will be the type
 
@@ -123,8 +126,26 @@ public class Main {
         
         for (int i = 0; i < myObjList.size(); i++)
         	System.out.println(myObjList.get(i).TagTerm);
+        
+        //Try out DB
+//        Database mysql = new Database(); // init database interface object
+//        try{
+//        	
+//        	boolean IsSuccessful = mysql.connectDB("root", "password", "SaberChan", "keywords");
+//        	
+//        }catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        }
+        
 
 	}
+	
+	public static void GetData()
+	{
+		
+	}
+	
+	
 	
 	
 	public static void GetTermFreq(List<TagObject> myObjList)
